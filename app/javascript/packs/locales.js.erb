@@ -1,2 +1,15 @@
 <% I18n.backend.load_translations %>
-export default <%= I18n.backend.send(:translations).to_json %>
+<% I18n.backend.send(:translations).to_json %>
+// TODO: Export locales
+export default {
+  'zh-TW': {
+    site: {
+      name: '五食',
+      description: '每個上班族都需要的午餐決策系統'
+    },
+    navbar: {
+      home: '首頁',
+      stores: '商店'
+    }
+  }
+}

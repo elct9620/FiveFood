@@ -14,9 +14,10 @@ gem 'webpacker'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'slim'
 gem 'sassc-rails'
+gem 'slim'
 
+gem 'geocoder'
 gem 'graphql'
 
 group :development, :test do
@@ -34,6 +35,9 @@ group :development do
   gem 'rspec-rails'
 
   gem 'pry-rails'
+
+  gem 'factory_girl'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
