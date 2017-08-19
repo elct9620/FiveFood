@@ -12,13 +12,28 @@ import 'bootstrap';
 
 import Vue from 'vue'
 import VueApollo from 'vue-apollo'
+import VueI18n from 'vue-i18n';
+import VueRouter from 'vue-router';
+
 import App from './app.vue'
 
-import apolloClient from './apollo.js.erb'
-const apolloProvider = new VueApollo({ defaultClient: apolloClient })
+import apolloClient from './apollo.js.erb';
+import messages from './locales.js.erb';
+import routes from './routes';
 
-Vue.use(VueApollo)
+Vue.use(VueApollo);
+Vue.use(VueI18n);
+Vue.use(VueRouter);
+
+const apolloProvider = new VueApollo({ defaultClient: apolloClient });
+const i18n = new VueI18n({ locale: 'zh-TW', fallbackLocale: 'zh-TW', messages });
+const router = new VueRouter({ routes });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({ apolloProvider, render: h => h(App) }).$mount('#app')
+  const app = new Vue({
+    apolloProvider,
+    i18n,
+    router,
+    render: h => h(App)
+  }).$mount('#app');
 })

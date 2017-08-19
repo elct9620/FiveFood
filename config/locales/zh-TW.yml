@@ -1,4 +1,7 @@
 zh-TW:
   site:
     name: 五食
-    description: 午餐選擇輔助系統
+    description: 每個上班族都必備的午餐決策系統
+  navbar:
+    home: 首頁
+    stores: 店家
