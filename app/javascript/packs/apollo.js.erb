@@ -1,0 +1,8 @@
+import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client'
+
+export default new ApolloClient({
+  networkInterface: createBatchingNetworkInterface({
+    uri: '<%= Rails.application.routes.url_helpers.graphql_path %>',
+  }),
+  connectToDevTools: process.env.NODE_ENV == 'development'
+});
