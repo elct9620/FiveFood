@@ -2,6 +2,8 @@ default: &default
   wit:
     frontend: <%= ENV['WIT_FRONTEND_TOKEN'] %>
     backend: <%= ENV['WIT_BACKEND_TOKEN'] %>
+  map:
+    key: <%= ENV['GOOGLE_MAP_KEY'] %>
   tags:
     - rice
     - noodle
