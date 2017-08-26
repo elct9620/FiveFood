@@ -59,6 +59,10 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubi (1.6.1)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -165,6 +169,7 @@ GEM
       sprockets (> 2.11)
       sprockets-rails
       tilt
+    settingslogic (2.0.9)
     slim (3.0.8)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 1.3.3, < 2.1)
@@ -205,6 +210,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 5.0)
   byebug
   capistrano-rails
+  dotenv-rails
   factory_girl
   faker
   geocoder
@@ -217,6 +223,7 @@ DEPENDENCIES
   rails (~> 5.1.3)
   rspec-rails
   sassc-rails
+  settingslogic
   slim
   spring
   spring-watcher-listen (~> 2.0.0)

@@ -5,6 +5,10 @@ class Store < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :update_geocode?
 
+  acts_as_taggable
+
+  before_save -> { self.tag_list = tag_list & Settings.tags }
+
   default_scope -> { order(created_at: :desc) }
 
   private
