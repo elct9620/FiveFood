@@ -52,7 +52,7 @@ export default {
       const description = this.description;
       const address = this.address;
       const tags = this.tags;
-      const tag_list = tags.map(tag => tag.value).join(',');
+      const tag_list = tags.map(tag => tag.value);
 
       this.name = '';
       this.description = '';
@@ -65,7 +65,7 @@ export default {
           name: name,
           description: description,
           address: address,
-          tag_list: tag_list
+          tag_list: tag_list.join(',')
         },
         update: (store, { data: { addStore } }) => {
           const data = store.readQuery({ query: storesQuery })
@@ -80,7 +80,7 @@ export default {
                 name: name,
                 description: description,
                 address: address,
-                tags: tag_list,
+                tags: tag_list.map(name => { return { name: name, __typename: 'Tag' } }),
                 latitude: 0,
                 longitude: 0
             }

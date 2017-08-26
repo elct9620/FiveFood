@@ -47,4 +47,8 @@ export default {
 .card {
   margin-top: 1rem;
 }
+
+.badge {
+  margin-right: .5rem;
+}
 </style>
