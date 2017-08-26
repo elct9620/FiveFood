@@ -26,8 +26,7 @@ export default {
   },
   apollo: {
     stores: {
-      query: storesQuery,
-      pollInterval: 5000,
+      query: storesQuery
     }
   },
   computed: {

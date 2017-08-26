@@ -9,6 +9,10 @@
       <input type="text" class="form-control" name="address" v-model="address" :placeholder="$t('store.placeholder.address')" tabindex="2" />
     </div>
     <div class="form-group">
+      <label for="tags">{{ $t('store.tag') }}</label>
+      <v-select multiple v-model="tags" :options="availableTags" />
+    </div>
+    <div class="form-group">
       <label for="description">{{ $t('store.description') }}</label>
       <textarea class="form-control" name="description" v-model="description" :placeholder="$t('store.placeholder.description')" tabindex="3"></textarea>
     </div>
@@ -17,14 +21,27 @@
 </template>
 
 <script>
+import vSelect from 'vue-select';
+
 import { storesQuery, addStoreMutation } from './query';
+
+const availableTags = <%= Settings.tags.to_json %>;
 
 export default {
   data: function() {
     return {
       name: '',
       description: '',
-      address: ''
+      address: '',
+      tags: []
+    }
+  },
+  components: {
+    'v-select': vSelect,
+  },
+  computed: {
+    availableTags() {
+      return availableTags.map(name => { return { value: name, label: this.$t(`store.tags.${name}`) } });
     }
   },
   methods: {
@@ -34,17 +51,21 @@ export default {
       const name = this.name;
       const description = this.description;
       const address = this.address;
+      const tags = this.tags;
+      const tag_list = tags.map(tag => tag.value);
 
       this.name = '';
       this.description = '';
       this.address = '';
+      this.tags = '';
 
       this.$apollo.mutate({
         mutation: addStoreMutation,
         variables: {
           name: name,
           description: description,
-          address: address
+          address: address,
+          tag_list: tag_list.join(',')
         },
         update: (store, { data: { addStore } }) => {
           const data = store.readQuery({ query: storesQuery })
@@ -59,6 +80,7 @@ export default {
                 name: name,
                 description: description,
                 address: address,
+                tags: tag_list.map(name => { return { name: name, __typename: 'Tag' } }),
                 latitude: 0,
                 longitude: 0
             }
@@ -69,6 +91,7 @@ export default {
           this.name= name;
           this.description = description;
           this.address = address;
+          this.tags = tags;
         })
     }
   }

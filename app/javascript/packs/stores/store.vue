@@ -2,6 +2,7 @@
   <div class="card">
     <div class="card-body">
       <h4><a href="#" @click="setLocation">{{ store.name }}</a></h4>
+      <span v-for="tag in store.tags" key="tag.name" class="badge badge-primary">{{ $t(`store.tags.${tag.name}`) }}</span>
       <p>{{ store.description }}</p>
       <footer class="blockquote-footer">{{ store.address }}</footer>
     </div>
@@ -21,6 +22,7 @@ export default {
           name: '',
           description: '',
           address: '',
+          tags: [],
           latitude: 0,
           longitude: 0
         }
@@ -44,5 +46,9 @@ export default {
 <style scoped>
 .card {
   margin-top: 1rem;
+}
+
+.badge {
+  margin-right: .5rem;
 }
 </style>

@@ -17,8 +17,11 @@ gem 'webpacker'
 gem 'sassc-rails'
 gem 'slim'
 
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'geocoder'
 gem 'graphql'
+gem 'graphql-query-resolver'
+gem 'settingslogic'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -34,6 +37,7 @@ group :development do
 
   gem 'rspec-rails'
 
+  gem 'dotenv-rails'
   gem 'pry-rails'
 
   gem 'factory_girl'

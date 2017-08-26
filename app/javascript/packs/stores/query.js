@@ -9,6 +9,9 @@ query Stores($cursor: String) {
         name
         description
         address
+        tags {
+          name
+        }
         latitude
         longitude
       }
@@ -22,12 +25,15 @@ query Stores($cursor: String) {
 `
 
 export const addStoreMutation = gql`
-mutation ($name: String!, $description: String!, $address: String!) {
-  addStore(store: { name: $name, description: $description, address: $address}) {
+mutation ($name: String!, $description: String!, $address: String!, $tag_list: String) {
+  addStore(store: { name: $name, description: $description, address: $address, tag_list: $tag_list}) {
     id
     name
     description
     address
+    tags {
+      name
+    }
     latitude
     longitude
   }

@@ -1,0 +1,15 @@
+default: &default
+  tags:
+    - rice
+    - noodle
+    - chinese
+    - japanese
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
