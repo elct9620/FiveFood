@@ -20,6 +20,7 @@ gem 'slim'
 gem 'acts-as-taggable-on', '~> 5.0'
 gem 'geocoder'
 gem 'graphql'
+gem 'graphql-query-resolver'
 gem 'settingslogic'
 
 group :development, :test do
