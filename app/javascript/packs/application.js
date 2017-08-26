@@ -14,6 +14,10 @@ import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
+import VueRx from 'vue-rx';
+
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 import apolloClient from './apollo.js.erb';
 import messages from './locales.js.erb';
@@ -24,6 +28,10 @@ import App from './app.vue'
 Vue.use(VueApollo);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
+Vue.use(VueRx, {
+  Observable,
+  Subject
+});
 
 const apolloProvider = new VueApollo({ defaultClient: apolloClient });
 const i18n = new VueI18n({ locale: 'zh-TW', fallbackLocale: 'zh-TW', messages });

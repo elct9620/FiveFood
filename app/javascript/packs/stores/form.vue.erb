@@ -54,6 +54,12 @@ export default {
       const tags = this.tags;
       const tag_list = tags.map(tag => tag.value);
 
+      let variables = {};
+      if (this.$route.params.tagged) {
+        variables = { tagged: this.$route.params.tagged };
+      }
+
+
       this.name = '';
       this.description = '';
       this.address = '';
@@ -68,9 +74,9 @@ export default {
           tag_list: tag_list.join(',')
         },
         update: (store, { data: { addStore } }) => {
-          const data = store.readQuery({ query: storesQuery })
+          const data = store.readQuery({ query: storesQuery, variables })
           data.stores.edges.unshift({ node: addStore, __typename: 'StoreEdge' })
-          store.writeQuery({ query: storesQuery, data })
+          store.writeQuery({ query: storesQuery, variables, data })
         },
         optimisticResponse: {
           __typename: 'Mutation',

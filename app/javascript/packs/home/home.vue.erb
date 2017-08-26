@@ -1,0 +1,81 @@
+<template>
+  <div>
+    <div class="hero" :style="{'background-image': `url(${heroImage})`}">
+      <div class="description">
+        <img class="logo" :src="logo" :alt="$t('site.name')" />
+        <p>{{ $t('site.description') }}</p>
+        <div class="query">
+          <form @submit="doNLP">
+            <div class="form-inline">
+              <input class="form-control" placeholder="我想吃飯" v-model="query" :disabled="!canQuery" />
+              <button class="btn btn-success my-2 my-sm-0" type="submit" :disabled="!canQuery">Ask</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import logo from '../assets/logo-white.svg';
+import heroImage from './assets/hero.jpg';
+
+const WIT_TOKEN = "<%= Settings.wit.frontend %>";
+const WIT_VERSION = 2017826;
+
+export default {
+  data: function() {
+    return {
+      logo,
+      heroImage,
+      query: '',
+      canQuery: true,
+    };
+  },
+  methods: {
+    doNLP(e) {
+      e.preventDefault();
+
+      this.canQuery = false;
+      $.ajax(`https://api.wit.ai/message?v=${WIT_VERSION}&q=${this.query}`, {
+        headers: { Authorization: `Bearer ${WIT_TOKEN}` }
+      }).then(res => {
+        this.showStores(res);
+      }).then(() => { this.canQuery = true; }, () => { this.canQuery = true });
+    },
+    showStores(result) {
+      const entities = result.entities;
+      if (!entities) { return; }
+      const categories = entities.food_category;
+      if (!categories) { return; }
+      this.$router.push(`stores/${categories[0].value}`);
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  padding-top: calc(100vh - 50px);
+}
+
+.description {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  color: white;
+  text-align: center;
+
+  transform: translate(-50%, -50%);
+
+  p {
+    margin-top: 1rem;
+  }
+}
+</style>
