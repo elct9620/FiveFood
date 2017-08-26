@@ -9,6 +9,8 @@ class Store < ApplicationRecord
 
   before_save -> { self.tag_list = tag_list & Settings.tags }
 
+  validates :name, :description, :address, presence: true
+
   default_scope -> { order(created_at: :desc) }
 
   private

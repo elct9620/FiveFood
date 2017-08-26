@@ -9,6 +9,9 @@ query Stores($cursor: String) {
         name
         description
         address
+        tags {
+          name
+        }
         latitude
         longitude
       }

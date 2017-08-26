@@ -5,6 +5,7 @@ Types::StoreType = GraphQL::ObjectType.define do
   field :name, !types.String
   field :description, !types.String
   field :address, !types.String
+  field :tags, types[Types::TagType]
   field :latitude, types.Float
   field :longitude, types.Float
 end
