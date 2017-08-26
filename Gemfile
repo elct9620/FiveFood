@@ -17,6 +17,7 @@ gem 'webpacker'
 gem 'sassc-rails'
 gem 'slim'
 
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'geocoder'
 gem 'graphql'
 
