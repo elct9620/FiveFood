@@ -1,18 +1,18 @@
 <template>
   <form @submit="addStore">
     <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" v-model="name" placeholder="Store Name" tabindex="1" />
+      <label for="name">{{ $t('store.name') }}</label>
+      <input type="text" class="form-control" name="name" v-model="name" :placeholder="$t('store.placeholder.name')" tabindex="1" />
     </div>
     <div class="form-group">
-      <label for="address">Address</label>
-      <input type="text" class="form-control" name="address" v-model="address" placeholder="Store Address" tabindex="2" />
+      <label for="address">{{ $t('store.address') }}</label>
+      <input type="text" class="form-control" name="address" v-model="address" :placeholder="$t('store.placeholder.address')" tabindex="2" />
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
-      <textarea class="form-control" name="description" v-model="description" placeholder="Describe this store" tabindex="3"></textarea>
+      <label for="description">{{ $t('store.description') }}</label>
+      <textarea class="form-control" name="description" v-model="description" :placeholder="$t('store.placeholder.description')" tabindex="3"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" tabindex="4">Add</button>
+    <button type="submit" class="btn btn-primary" tabindex="4">{{ $t('store.submit') }}</button>
   </form>
 </template>
 

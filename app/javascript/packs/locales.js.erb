@@ -1,5 +1,5 @@
-<% I18n.backend.load_translations %>
-<% I18n.backend.send(:translations).to_json %>
+// I18n.backend.load_translations
+// I18n.backend.send(:translations).to_json
 // TODO: Export locales
 export default {
   'zh-TW': {
@@ -10,6 +10,17 @@ export default {
     navbar: {
       home: '首頁',
       stores: '商店'
+    },
+    store: {
+      name: '商店名稱',
+      description: '簡介',
+      address: '地址',
+      submit: '新增',
+      placeholder: {
+        name: '五倍紅寶石',
+        description: '是有貓咪的公司呢！',
+        address: '台北市中正區衡陽路 7 號 5 樓'
+      }
     }
   }
 }

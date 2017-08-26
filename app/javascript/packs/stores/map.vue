@@ -15,7 +15,7 @@ export default {
       type: Object,
       default: function() {
         return {
-          zoom: 15,
+          zoom: 18,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
         }
       }
@@ -37,6 +37,9 @@ export default {
       }
     },
     buildMarkers() {
+      this.markersInstance.map(marker => marker.setMap(null));
+      this.markersInstance = [];
+
       this.markers.map(marker => {
         if (!marker.location.lat || !marker.location.lng) {
           return;

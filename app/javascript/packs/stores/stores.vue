@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <google-map class="col-md-8" :markers="markers" />
+      <google-map ref="map" class="col-md-8" :markers="markers" />
       <div class="col-md-4 overflow-container">
         <create-store-form />
         <store v-for="store in stores.edges" :store="store.node" :key="store.node.id" />
@@ -14,7 +14,7 @@
 import Map from './map.vue';
 import Store from './store.vue';
 import Form from './form.vue';
-import { storesQuery } from './query.js';
+import { storesQuery } from './query';
 
 export default {
   data: function() {
@@ -26,7 +26,8 @@ export default {
   },
   apollo: {
     stores: {
-      query: storesQuery
+      query: storesQuery,
+      pollInterval: 5000,
     }
   },
   computed: {

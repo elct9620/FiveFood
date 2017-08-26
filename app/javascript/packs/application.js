@@ -15,11 +15,11 @@ import VueApollo from 'vue-apollo'
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 
-import App from './app.vue'
-
 import apolloClient from './apollo.js.erb';
 import messages from './locales.js.erb';
 import routes from './routes';
+
+import App from './app.vue'
 
 Vue.use(VueApollo);
 Vue.use(VueI18n);
