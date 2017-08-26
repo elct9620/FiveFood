@@ -69,6 +69,9 @@ GEM
     faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.18)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     geocoder (1.4.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -215,6 +218,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl
   faker
+  foreman
   geocoder
   graphiql-rails
   graphql
