@@ -26,7 +26,15 @@ export default {
   },
   apollo: {
     stores: {
-      query: storesQuery
+      query: storesQuery,
+      variables() {
+        if (this.$route.params.tagged) {
+          return {
+            tagged: this.$route.params.tagged
+          };
+        }
+        return {};
+      }
     }
   },
   computed: {

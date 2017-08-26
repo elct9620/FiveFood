@@ -2,7 +2,13 @@ Types::QueryType = GraphQL::ObjectType.define do
   name 'Query'
 
   connection :stores, Types::StoreType.connection_type, max_page_size: 25 do
-    resolve ->(_obj, _args, _ctx) { Store.all }
+    argument :tagged, types.String
+
+    resolve lambda { |_obj, args, _ctx|
+      stores = Store.all
+      stores = stores.tagged_with(args[:tagged]) if args[:tagged]
+      stores
+    }
   end
 
   field :store do

@@ -1,4 +1,7 @@
 default: &default
+  wit:
+    frontend: <%= ENV['WIT_FRONTEND_TOKEN'] %>
+    backend: <%= ENV['WIT_BACKEND_TOKEN'] %>
   tags:
     - rice
     - noodle

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const storesQuery = gql`
-query Stores($cursor: String) {
-  stores(first: 25, after: $cursor) {
+query Stores($cursor: String, $tagged: String) {
+  stores(first: 25, after: $cursor, tagged: $tagged) {
     edges {
       node {
         id
