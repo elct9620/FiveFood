@@ -16,41 +16,25 @@ FiveFood
 
 Get the repository
 
-```
+```sh
 $ git clone git@github.com:elct9620/FiveFood.git
 ```
 
-Install dependencies
+### Setup
 
-```
-$ bundle install
-```
-
-Prepare for javascript
-
-```
-$ yarn
+```sh
+$ bin/setup
 ```
 
-Setup database
 
-```
-# Run this taks if you didn't create database
-$ rake db:create
-```
+### Running
 
-```
-$ rake db:migrate
-```
+In development, you'll need to run `bin/rails server` with `bin/webpack-dev-server` to have the `app/javascript/packs/*.js` files be compiled as you make changes, and `bin/relay-compiler` if you change the GraphQL schema or any `graphql` tags in any JavaScript files.
 
-Start Rails
+If you'd rather not have to run the two processes separately by hand, you can use [Foreman](https://ddollar.github.io/foreman/):
 
-```
-$ rails s
+```sh
+$ bin/foreman start
 ```
 
-Start Webpack Dev Server
-
-```
-$ ./bin/webpack-dev-server
-```
+The default port of the Rails Server is `5000`.
