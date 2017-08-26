@@ -31,6 +31,7 @@ export default {
     setLocation(ev) {
       ev.preventDefault();
 
+      // TODO: Refactor to use `$emit` or `vuex`
       if(this.$parent.$refs.map) {
         const newLocation = new google.maps.LatLng(this.store.latitude, this.store.longitude);
         this.$parent.$refs.map.map.panTo(newLocation);
