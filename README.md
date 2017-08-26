@@ -1,24 +1,56 @@
-# README
+FiveFood
+===
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+* Ruby 2.4+
+* Node 8.0+
+* PostgreSQL 9.6
+* Yarn
 
-* Ruby version
+## Usage
 
-* System dependencies
+> TODO
 
-* Configuration
+## Development
 
-* Database creation
+Get the repository
 
-* Database initialization
+```
+$ git clone git@github.com:elct9620/FiveFood.git
+```
 
-* How to run the test suite
+Install dependencies
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ bundle install
+```
 
-* Deployment instructions
+Prepare for javascript
 
-* ...
+```
+$ yarn
+```
+
+Setup database
+
+```
+# Run this taks if you didn't create database
+$ rake db:create
+```
+
+```
+$ rake db:migrate
+```
+
+Start Rails
+
+```
+$ rails s
+```
+
+Start Webpack Dev Server
+
+```
+$ ./bin/webpack-dev-server
+```
